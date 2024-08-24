@@ -2,39 +2,93 @@
   margin: 0 auto;
   padding: 2rem;
 }
-/*
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.form-wizard-container {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  height: 90dvh;
+  border-radius: 8px;
 }
 
-@keyframes logo-spin {
+.wizard-step-panel-container {
+  padding: 25px;
+  position: absolute;
+  width: 100%;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+.slide-in {
+  animation-name: slide-in;
+}
+
+.slide-out {
+  animation-name: slide-out;
+}
+
+@keyframes slide-in {
   from {
-    transform: rotate(0deg);
+    transform: translateX(-50%);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 
-.card {
-  padding: 2em;
+.top-navigator-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+.bottom-navigator-container {
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  display: flex;
+  direction: row;
+  gap: 10px;
+}
+
+.step-title {
+  padding: 1rem;
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  transition: color 0.2s;
+  color: rgba(128, 128, 128, 0.377);
+}
+
+.step-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  background-color: rgba(128, 128, 128, 0.253);
+}
+
+.current-step {
+  color: #000000;
+}
+
+.current-step::after {
+  transform: scaleX(1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
