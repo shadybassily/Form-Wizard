@@ -6,10 +6,11 @@ export default defineConfig({
   server: {
     host: true,
     port: 3000,
+    open: true,
   },
   resolve: {
     alias: {
-      components: "/src/components",
+      src: "/src",
     },
   },
 });

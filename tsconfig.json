@@ -8,10 +8,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
+    
     "baseUrl": ".",  // Root of the project
     "paths": {
-      "components/*": ["src/components/*"]
+      "src/*": ["src/*"],
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/context/CounterContext.tsx"]
 }
