@@ -1,7 +1,8 @@
 {
   "name": "form-wizard",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
+  "description": "A customizable form wizard component for React",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +10,21 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "keywords": [
+    "react",
+    "form",
+    "wizard",
+    "formik",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "author": "Shady Bassily <shadys.bassily@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "formik": "^2.4.6",
     "react": "^18.3.1",
