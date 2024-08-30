@@ -1,6 +1,7 @@
 import { FormWizard } from "src/components";
 import * as Yup from "yup";
 import "./App.css";
+import useFormWizard from "./hooks/useFormWizard";
 
 function App() {
   const steps = [
@@ -21,7 +22,7 @@ function App() {
     },
   ];
 
-  const form = {
+  const formOptions = {
     initialValues: {
       firstName: "",
       lastName: "",
@@ -40,14 +41,16 @@ function App() {
     enableReinitialize: true,
   };
 
+  const { formik } = useFormWizard(formOptions);
+
   return (
     <>
       <FormWizard
+        formik={formik}
         isTopNavigator
         isBottomNavigator
         initialStep={0}
         steps={steps}
-        form={form}
         styles={{
           formWizardContainer: "form-wizard-container",
           WizardStepPanel: {

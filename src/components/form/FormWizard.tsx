@@ -10,15 +10,13 @@ interface FormWizardProps {
   steps: Step[];
   isTopNavigator?: boolean;
   isBottomNavigator?: boolean;
-  form: any;
   topNavigatorStyles?: any;
   styles?: any;
+  formik: any;
 }
 
-const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], form, styles, isTopNavigator = false, isBottomNavigator = false }) => {
+const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], styles, isTopNavigator = false, isBottomNavigator = false, formik }) => {
   const [currentStep, handleChange] = useSteps(initialStep);
-
-  const { formik } = useFormWizard(form);
 
   const checkIsStepCompletion = (step: Step) => {
     const { fields } = step;
@@ -53,6 +51,7 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], fo
   useEffect(() => {
     formik.validateForm();
   }, []);
+  
   return (
     <div className={styles.formWizardContainer}>
       <form onSubmit={formik.handleSubmit}>
