@@ -1,6 +1,7 @@
 import React from "react";
 import { Step } from "src/types/index";
 import ShowComponentWhen from "src/components/common/ShowComponentWhen";
+import { FormikFormProps } from "formik";
 
 interface BottomNavigatorProps {
   steps: Step[];
@@ -12,7 +13,6 @@ interface BottomNavigatorProps {
 
 const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, handleChange, formik, styles }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
-  
 
   const isLastTab = currentStep == steps.length - 1;
   const isFirstTab = currentStep == 0;
@@ -31,7 +31,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
         when={!isFirstTab}
         show={
           <button type="button" className={styles.back} onClick={handleBack}>
-            back
+            Back
           </button>
         }
       />
@@ -39,7 +39,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
         when={!isLastTab}
         show={
           <button type="button" className={styles.next} onClick={handleNext} disabled={isNextDisabled}>
-            next
+            Next
           </button>
         }
       />
@@ -48,7 +48,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
         when={isLastTab}
         show={
           <button className={styles.submit} type="submit" onClick={formik.handleSubmit}>
-            submit
+            Submit
           </button>
         }
       />

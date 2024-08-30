@@ -1,54 +1,35 @@
 * {
   margin: 0;
-  box-sizing: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
   margin: 0 auto;
   padding: 2rem;
+  background-color: #e0e7ff75;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
 }
 
 .form-wizard-container {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
-  height: 90dvh;
-  border-radius: 8px;
-}
-
-.wizard-step-panel-container {
+  height: 85vh;
   padding: 25px;
-  position: absolute;
-  width: 100%;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-}
+  min-width: 90%;
 
-.slide-in {
-  animation-name: slide-in;
-}
-
-.slide-out {
-  animation-name: slide-out;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-out {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.43);
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .top-navigator-container {
@@ -83,11 +64,78 @@
 
 .current-step {
   color: rgba(37, 92, 163, 0.719);
+  
 }
 
 .current-step::after {
   transform: scaleX(1);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wizard-step-panel-container {
+  padding: 40px 0px;
+  width: 90%;
+  animation-duration: 0.5s;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100vh;
+  gap: 50px;
+}
+
+.slide-in {
+  animation-name: slide-in;
+}
+
+.slide-out {
+  animation-name: slide-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* @keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+} */
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.form-input::placeholder {
+  opacity: 0.5; 
+}
+
+.form-input:focus {
+  border-color: #66afe9;
+  outline: none;
 }
 
 .bottom-navigator-container {
@@ -102,24 +150,24 @@
 
 /* Next Button */
 .next-button {
-  background-color: #4caf50; /* Green background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Padding for size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 16px; /* Font size */
+  background-color: #008cba;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /* Back Button */
 .back-button {
-  background-color: #f44336; /* Red background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Padding for size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 16px; /* Font size */
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /* Submit Button */

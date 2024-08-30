@@ -43,12 +43,13 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], st
         value: isFile ? "" : formik.values[field.name],
         onChange: (e: any) => {
           if (isFile) {
-            const file = e.target.files[0];
+            const file = e.target.files ? e.target.files[0] : null;
             formik.setFieldValue([field.name], file);
           } else {
             formik.setFieldValue([field.name], e.target.value);
           }
         },
+        onBlur: formik.handleBlur,
       };
     });
   };
@@ -65,7 +66,7 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], st
         {isTopNavigator && (
           <TopNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} topNavigatorStyles={styles.topNavigatorStyles} formik={formik} />
         )}
-        <WizardStepPanel steps={modifiedSteps} currentStep={currentStep} styles={styles.WizardStepPanel} />
+        <WizardStepPanel steps={modifiedSteps} currentStep={currentStep} styles={styles.WizardStepPanel} formik={formik} />
         {isBottomNavigator && (
           <BottomNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} styles={styles.bottomNavigatorStyles} />
         )}
