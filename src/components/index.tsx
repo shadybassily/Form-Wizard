@@ -1,4 +1,4 @@
-export { default as TopNavigator } from "src/components/TopNavigator";
-export { default as BottomNavigator } from "src/components/BottomNavigator";
-export { default as WizardStepPanel } from "src/components/WizardStepPanel";
-export { default as FormWizard } from "src/components/FormWizard";
+export { default as TopNavigator } from "./form/TopNavigator";
+export { default as BottomNavigator } from "./form/BottomNavigator";
+export { default as WizardStepPanel } from "./form/WizardStepPanel";
+export { default as FormWizard } from "./form/FormWizard";

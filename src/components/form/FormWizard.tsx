@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BottomNavigator, TopNavigator, WizardStepPanel } from "src/components";
 import useSteps from "src/hooks/useSteps";
-import { Field, Step } from "src/types/index.d";
+import { Field, Step } from "src/types/index";
 import useFormWizard from "src/hooks/useFormWizard";
 
 interface FormWizardProps {
@@ -29,7 +29,7 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], fo
   };
 
   const addExtraKeys = (steps: Step[]) => {
-    return steps.map((step, i) => {
+    return steps.map((step) => {
       return {
         ...step,
         isCompleted: checkIsStepCompletion(step),
@@ -39,7 +39,7 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], fo
   };
 
   const assignChangeFunctionToFormFields = (fields: Field[]) => {
-    return fields.map((field, i) => {
+    return fields.map((field) => {
       return {
         ...field,
         value: formik.values[field.name],

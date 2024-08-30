@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "target": "ESNext",
+    "module": "ESNext",
     "jsx": "react-jsx",
-    "moduleResolution": "node",
+    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true,
-    
-    "baseUrl": ".",  // Root of the project
+    "baseUrl": ".",
+    "moduleResolution": "node", // Add this line
     "paths": {
-      "src/*": ["src/*"],
-    }
+      // Define paths if necessary, or leave empty if not using aliases
+    },
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist"
   },
-  "include": ["src", "src/context/CounterContext.tsx"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

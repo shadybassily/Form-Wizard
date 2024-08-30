@@ -38,7 +38,6 @@ function App() {
       phoneNumber: Yup.number().required("phoneNumber is required"),
     }),
     enableReinitialize: true,
-    
   };
 
   return (

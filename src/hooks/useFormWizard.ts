@@ -1,5 +1,5 @@
 // src/hooks/useFormWizard.ts
-import { useFormik, FormikConfig, FormikValues, FormikErrors, FormikTouched } from "formik";
+import { useFormik, FormikConfig, FormikValues } from "formik";
 import * as Yup from "yup";
 
 // Define a type for the hook parameters

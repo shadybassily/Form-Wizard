@@ -1,6 +1,6 @@
 import React from "react";
-import { Step } from "src/types/index.d";
-import ShowComponentWhen from "./common/ShowComponentWhen";
+import { Step } from "src/types/index";
+import ShowComponentWhen from "src/components/common/ShowComponentWhen";
 
 interface BottomNavigatorProps {
   steps: Step[];

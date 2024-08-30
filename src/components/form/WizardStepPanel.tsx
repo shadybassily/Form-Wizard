@@ -1,5 +1,5 @@
 import React from "react";
-import { Step } from "src/types/index.d";
+import { Step } from "src/types";
 
 interface WizardStepPanelProps {
   steps: Step[];
@@ -12,7 +12,7 @@ const WizardStepPanel: React.FC<WizardStepPanelProps> = ({ steps, currentStep, s
 
   return (
     <div className={`${styles.container}`} key={currentStep}>
-      {fields?.map((field, i) => (
+      {fields?.map((field: any, i: number) => (
         <div key={i}>
           <label>{field.label}</label>
           {field.required && "*"}

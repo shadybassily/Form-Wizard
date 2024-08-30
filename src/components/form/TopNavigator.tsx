@@ -1,5 +1,5 @@
 import React from "react";
-import { Step } from "src/types/index.d";
+import { Step } from "src/types/index";
 // import styles from "./top-navigator.module.css";
 
 interface TopNavigatorProps {
@@ -10,9 +10,7 @@ interface TopNavigatorProps {
   topNavigatorStyles?: any;
 }
 
-const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange, topNavigatorStyles, formik }) => {
-  const { fields } = steps[currentStep];
-
+const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange, topNavigatorStyles }) => {
   const handleOnClick = (i: number) => {
     handleChange(i);
   };
