@@ -2,7 +2,7 @@ import React from "react";
 
 interface ShowComponentWhenProps {
   when: boolean;
-  show: React.ReactNode;
+  show: React.ReactNode | any;
   elseComponent?: React.ReactNode;
 }
 

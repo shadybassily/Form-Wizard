@@ -3,6 +3,10 @@ import * as Yup from "yup";
 import "./App.css";
 import useFormWizard from "./hooks/useFormWizard";
 
+const CustomFieldComponent = (props: any) => {
+  return <input {...props} style={{ border: "2px solid green" }} />;
+};
+
 function App() {
   const steps = [
     {
@@ -10,11 +14,8 @@ function App() {
       fields: [
         { name: "firstName", label: "first Name", placeholder: "Enter your first Name", type: "text", required: true },
         { name: "lastName", label: "last Name", placeholder: "Enter your last Name", type: "text", required: false },
+        { name: "resume", type: "file", customElement: CustomFieldComponent },
       ],
-    },
-    {
-      title: "Step2",
-      fields: [{ name: "age", label: "Age", placeholder: "Enter your age", type: "number" }],
     },
     {
       title: "Step3",
@@ -26,8 +27,8 @@ function App() {
     initialValues: {
       firstName: "",
       lastName: "",
-      age: 0,
-      phoneNumber: "+20",
+      resume: "",
+      phoneNumber: "",
     },
     onSubmit: (values: any) => {
       console.log(values);
@@ -35,7 +36,7 @@ function App() {
     validationSchema: Yup.object({
       firstName: Yup.string().required("firstName is required"),
       lastName: Yup.string().required("lastName is required"),
-      age: Yup.number().required("Age is required").positive().integer(),
+      resume: Yup.string().required("lastName is required"),
       phoneNumber: Yup.number().required("phoneNumber is required"),
     }),
     enableReinitialize: true,
@@ -63,6 +64,9 @@ function App() {
           },
           bottomNavigatorStyles: {
             container: "bottom-navigator-container",
+            next: "next-button",
+            back: "back-button",
+            submit: "submit-button",
           },
         }}
       />

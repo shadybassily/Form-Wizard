@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { BottomNavigator, TopNavigator, WizardStepPanel } from "src/components";
 import useSteps from "src/hooks/useSteps";
 import { Field, Step } from "src/types/index";
-import useFormWizard from "src/hooks/useFormWizard";
 
 interface FormWizardProps {
   isTabs?: boolean;
@@ -38,10 +37,18 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], st
 
   const assignChangeFunctionToFormFields = (fields: Field[]) => {
     return fields.map((field) => {
+      const isFile = field.type == "file";
       return {
         ...field,
-        value: formik.values[field.name],
-        onChange: formik.handleChange,
+        value: isFile ? "" : formik.values[field.name],
+        onChange: (e: any) => {
+          if (isFile) {
+            const file = e.target.files[0];
+            formik.setFieldValue([field.name], file);
+          } else {
+            formik.setFieldValue([field.name], e.target.value);
+          }
+        },
       };
     });
   };
@@ -51,7 +58,7 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], st
   useEffect(() => {
     formik.validateForm();
   }, []);
-  
+
   return (
     <div className={styles.formWizardContainer}>
       <form onSubmit={formik.handleSubmit}>

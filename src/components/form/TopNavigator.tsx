@@ -1,6 +1,5 @@
 import React from "react";
 import { Step } from "src/types/index";
-// import styles from "./top-navigator.module.css";
 
 interface TopNavigatorProps {
   steps: Step[];
@@ -12,12 +11,6 @@ interface TopNavigatorProps {
 
 const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange, topNavigatorStyles }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
-  console.log(isNextDisabled);
-
-  const isLastTab = currentStep == steps.length - 1;
-  const isFirstTab = currentStep == 0;
-
-  // console.log("isNextDisabled", isNextDisabled, "isFirstTab", isFirstTab, "isLastTab", isLastTab);
 
   const handleOnClick = (i: number) => {
     if (i < currentStep) {

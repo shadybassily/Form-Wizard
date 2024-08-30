@@ -57,15 +57,6 @@
   position: relative;
 }
 
-.bottom-navigator-container {
-  position: absolute;
-  bottom: 0;
-  padding: 5px;
-  display: flex;
-  direction: row;
-  gap: 10px;
-}
-
 .step-title {
   padding: 1rem;
   cursor: pointer;
@@ -87,14 +78,74 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
   transform: scaleX(0);
   transform-origin: bottom left;
-  background-color: rgba(128, 128, 128, 0.253);
+  background-color: rgba(37, 92, 163, 0.719);
 }
 
 .current-step {
-  color: #000000;
+  color: rgba(37, 92, 163, 0.719);
 }
 
 .current-step::after {
   transform: scaleX(1);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bottom-navigator-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 25px;
+  display: flex;
+  direction: row;
+  gap: 10px;
+}
+
+/* Next Button */
+.next-button {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+}
+
+/* Back Button */
+.back-button {
+  background-color: #f44336; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #008cba; /* Blue background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+}
+
+/* Common Styles for All Buttons */
+.next-button:hover,
+.back-button:hover,
+.submit-button:hover {
+  opacity: 0.9; /* Slightly dim the button on hover */
+}
+.next-button:disabled,
+.submit-button:disabled {
+  opacity: 0.5; /* Slightly dim the button on hover */
+}
+
+.next-button:focus,
+.back-button:focus,
+.submit-button:focus {
+  outline: none; /* Remove default focus outline */
 }

@@ -12,6 +12,7 @@ interface BottomNavigatorProps {
 
 const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, handleChange, formik, styles }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
+  
 
   const isLastTab = currentStep == steps.length - 1;
   const isFirstTab = currentStep == 0;
@@ -26,11 +27,18 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
 
   return (
     <div className={styles.container}>
-      <ShowComponentWhen when={!isFirstTab} show={<button onClick={handleBack}>back</button>} />
+      <ShowComponentWhen
+        when={!isFirstTab}
+        show={
+          <button type="button" className={styles.back} onClick={handleBack}>
+            back
+          </button>
+        }
+      />
       <ShowComponentWhen
         when={!isLastTab}
         show={
-          <button onClick={handleNext} disabled={isNextDisabled}>
+          <button type="button" className={styles.next} onClick={handleNext} disabled={isNextDisabled}>
             next
           </button>
         }
@@ -39,7 +47,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
       <ShowComponentWhen
         when={isLastTab}
         show={
-          <button type="submit" onClick={formik.handleSubmit} disabled={isNextDisabled}>
+          <button className={styles.submit} type="submit" onClick={formik.handleSubmit}>
             submit
           </button>
         }
