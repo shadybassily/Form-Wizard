@@ -48,7 +48,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
       <ShowComponentWhen
         when={isLastTab}
         show={
-          <button className="submit-button" type="submit" onClick={formik.handleSubmit}>
+          <button className="submit-button" type="submit" onClick={formik.handleSubmit} disabled={isNextDisabled}>
             Submit
           </button>
         }
