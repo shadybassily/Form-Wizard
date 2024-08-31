@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BottomNavigator, TopNavigator, WizardStepPanel } from "src/components";
 import useSteps from "src/hooks/useSteps";
 import { Field, Step } from "src/types/index";
@@ -13,6 +13,7 @@ interface FormWizardProps {
 
 const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], isTopNavigator = false, isBottomNavigator = false, formik }) => {
   const [currentStep, handleChange] = useSteps(initialStep);
+  const [isNext, setIsNext] = useState(false);
 
   const checkIsStepCompletion = (step: Step) => {
     const { fields } = step;
@@ -36,11 +37,11 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], is
     return fields.map((field) => {
       const isFile = field.type == "file";
       const isCheckbpx = field.type == "checkbox";
-      
+
       return {
         ...field,
         value: isFile ? "" : formik.values[field.name],
-        checked : formik.values[field.name],
+        checked: formik.values[field.name],
         onChange: (e: any) => {
           if (isFile) {
             const file = e.target.files ? e.target.files[0] : null;
@@ -66,9 +67,9 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], is
   return (
     <div className="form-wizard-container">
       <form onSubmit={formik.handleSubmit}>
-        {isTopNavigator && <TopNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} />}
-        <WizardStepPanel steps={modifiedSteps} currentStep={currentStep} formik={formik} />
-        {isBottomNavigator && <BottomNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} />}
+        {isTopNavigator && <TopNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} setIsNext={setIsNext} />}
+        <WizardStepPanel steps={modifiedSteps} currentStep={currentStep} formik={formik} isNext={isNext} />
+        {isBottomNavigator && <BottomNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} setIsNext={setIsNext} />}
       </form>
     </div>
   );

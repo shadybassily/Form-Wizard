@@ -6,17 +6,20 @@ interface TopNavigatorProps {
   currentStep: number;
   formik: any;
   handleChange: (newStep: number) => void;
+  setIsNext: (value: boolean) => void;
 }
 
-const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange }) => {
+const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange, setIsNext }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
 
   const handleOnClick = (i: number) => {
     if (i < currentStep) {
       handleChange(i);
+      setIsNext(false);
     } else {
       if (isNextDisabled) return;
       handleChange(i);
+      setIsNext(true);
     }
   };
 

@@ -7,9 +7,10 @@ interface BottomNavigatorProps {
   currentStep: number;
   handleChange: (newStep: number) => void;
   formik: any;
+  setIsNext: (value: boolean) => void;
 }
 
-const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, handleChange, formik }) => {
+const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, handleChange, formik, setIsNext }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
 
   const isLastTab = currentStep == steps.length - 1;
@@ -17,10 +18,12 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
 
   const handleNext = () => {
     handleChange(currentStep + 1);
+    setIsNext(true);
   };
 
   const handleBack = () => {
     handleChange(currentStep - 1);
+    setIsNext(false);
   };
 
   return (

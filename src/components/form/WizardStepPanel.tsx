@@ -7,13 +7,14 @@ interface WizardStepPanelProps {
   steps: Step[];
   currentStep: number;
   formik: any;
+  isNext:boolean
 }
 
-const WizardStepPanel: React.FC<WizardStepPanelProps> = ({ steps, currentStep, formik }) => {
+const WizardStepPanel: React.FC<WizardStepPanelProps> = ({ steps, currentStep, formik, isNext }) => {
   const { fields } = steps[currentStep];
 
   return (
-    <div className="wizard-step-panel-container slide-in" key={currentStep}>
+    <div className={`${`wizard-step-panel-container ${isNext ? "slide-out" : "slide-in"}`}`} key={currentStep}>
       {fields?.map((field: any, i: number) => {
         const { CustomElement, ...rest } = field;
         const isFile = field.type === "file";
