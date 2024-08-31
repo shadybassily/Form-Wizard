@@ -1,9 +1,15 @@
 import { ReactNode } from "react";
-
-export type Field = any;
+interface Field {
+  name: string;
+  label?: string;
+  placeholder?: string;
+  type: string;
+  required?: boolean;
+  CustomElement?: React.ComponentType<any>;
+}
 
 export interface Step {
-  title: string | ReactNode;
   fields: Field[];
+  title: string | ReactNode;
   isCompleted?: boolean;
 }

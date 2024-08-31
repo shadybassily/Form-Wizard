@@ -71,7 +71,7 @@ function App() {
 
   const { formik } = useFormWizard(formOptions);
 
-  return <FormWizard formik={formik} steps={steps} isTopNavigator isBottomNavigator initialStep={1} />;
+  return <FormWizard formik={formik} steps={steps} isTopNavigator isBottomNavigator />;
 }
 
 export default App;
