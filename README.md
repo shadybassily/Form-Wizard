@@ -20,7 +20,7 @@ npm install form-wizard-react
 yarn add form-wizard-react
 ```
 
-![Form Wizard Demo](https://drive.google.com/file/d/1zlFLjhFfskpucvnhlB-DnYGbZowjPER3/view?usp=sharing)
+![Form Wizard Demo](https://drive.google.com/uc?id=1zlFLjhFfskpucvnhlB-DnYGbZowjPER3)
 
 Usage
 Basic Example
