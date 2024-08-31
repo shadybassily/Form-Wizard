@@ -16,8 +16,7 @@ You can install the package using npm or yarn:
 
 ```sh
 npm install form-wizard-reactjs
-# or
-yarn add form-wizard-reactjs
+
 ```
 
 ![Form Wizard Demo](https://drive.google.com/uc?id=1zlFLjhFfskpucvnhlB-DnYGbZowjPER3)
@@ -153,11 +152,11 @@ The `steps` prop should be an array of step objects with the following structure
 Each field object in the `fields` array should follow this structure:
 
 | Property        | Type                       | Description                                         |
-| --------------- | -------------------------- | --------------------------------------------------- | 
+| --------------- | -------------------------- | --------------------------------------------------- |
 | `name`          | `string`                   | The name of the field.                              |
 | `label`         | `string`                   | The label of the field.                             |
 | `placeholder`   | `string`                   | The placeholder text for the input.                 |
-| `type`          | `string`                   | input type [text,number,checkbox,file] only         | 
+| `type`          | `string`                   | input type [text,number,checkbox,file] only         |
 | `required`      | `boolean`                  | Whether the field is required.                      |
 | `CustomElement` | `React.ComponentType<any>` | Optional custom component to render for this field. |
 
