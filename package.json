@@ -1,7 +1,7 @@
 {
   "name": "form-wizard-reactjs",
   "private": false,
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A customizable form wizard component for React",
   "type": "module",
   "scripts": {
