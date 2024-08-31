@@ -20,6 +20,8 @@ npm install form-wizard-react
 yarn add form-wizard-react
 ```
 
+![Form Wizard Demo](https://drive.google.com/file/d/1zlFLjhFfskpucvnhlB-DnYGbZowjPER3/view?usp=drive_link)
+
 Usage
 Basic Example
 To use the FormWizard component, you need to provide it with a steps array and Formik configuration.
