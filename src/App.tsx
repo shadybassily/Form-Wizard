@@ -15,89 +15,63 @@ const CustomFieldComponent = (props: any) => {
 function App() {
   const steps = [
     {
-      title: "step 1",
+      title: "Step 1",
       fields: [
-        { name: "firstName", label: "first Name", placeholder: "Enter your first Name", type: "text", required: true },
-        { name: "lastName", label: "last Name", placeholder: "Enter your last Name", type: "text", required: false },
-        { name: "phoneNumber", label: "phone Number", placeholder: "Enter your phoneNumber", type: "text" },
-        { name: "email", label: "email", placeholder: "Enter your email", type: "text" },
+        { name: "first_name", label: "first Name", placeholder: "Enter your first Name", type: "text", required: true },
+        { name: "last_name", label: "last Name", placeholder: "Enter your last Name", type: "text", required: true },
+        { name: "phone_number", label: "phone Number", placeholder: "Enter your phoneNumber", type: "text", required: true },
+        { name: "email", label: "email", placeholder: "Enter your email", type: "text", required: true },
       ],
     },
     {
-      title: "step2",
-      fields: [{ name: "resume", type: "file", label: "Resume", CustomElement: CustomFieldComponent }],
+      title: "Step 2",
+      fields: [
+        { name: "profile_picture", type: "file", label: "profile_picture", required: true },
+        { name: "is_verified", type: "checkbox", label: "Is Verified" },
+      ],
     },
     {
       title: "Step 3",
       fields: [
-        { name: "field1", label: "field 1", placeholder: "Enter field 1", type: "text" },
-        { name: "field2", label: "field 2", placeholder: "Enter field 2", type: "text" },
-        { name: "field3", label: "field 3", placeholder: "Enter field 3", type: "text" },
+        { name: "field_1", label: "field 1", placeholder: "Enter field 1", type: "text" },
+        { name: "field_2", label: "field 2", placeholder: "Enter field 2", type: "text" },
+        { name: "field_3", label: "field 3", placeholder: "Enter field 3", type: "text" },
       ],
     },
   ];
 
   const formOptions = {
     initialValues: {
-      firstName: "",
-      lastName: "",
-      resume: "",
-      phoneNumber: "",
+      first_name: "",
+      last_name: "",
+      profile_picture: "",
+      phone_number: "",
       email: "",
-      field1: "",
-      field2: "",
-      field3: "",
+      is_verified: false,
+      field_1: "",
+      field_2: "",
+      field_3: "",
     },
     onSubmit: (values: any) => {
       console.log(values);
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required("firstName is required"),
-      lastName: Yup.string().required("lastName is required"),
+      first_name: Yup.string().required("firstName is required"),
+      last_name: Yup.string().required("lastName is required"),
       email: Yup.string().email("Enter a valid email").required("email is required"),
-      resume: Yup.string().required("lastName is required"),
-      phoneNumber: Yup.number().required("phoneNumber is required"),
-      field1: Yup.string().required("lastName is required"),
-      field2: Yup.string().required("lastName is required"),
-      field3: Yup.string().required("lastName is required"),
+      is_verified: Yup.boolean(),
+      profile_picture: Yup.string().required("lastName is required"),
+      phone_number: Yup.number().required("phoneNumber is required"),
+      field_1: Yup.string().required("lastName is required"),
+      field_2: Yup.string().required("lastName is required"),
+      field_3: Yup.string().required("lastName is required"),
     }),
     enableReinitialize: true,
   };
 
   const { formik } = useFormWizard(formOptions);
 
-  return (
-    <>
-      <FormWizard
-        formik={formik}
-        isTopNavigator
-        isBottomNavigator
-        initialStep={0}
-        steps={steps}
-        styles={{
-          formWizardContainer: "form-wizard-container",
-          WizardStepPanel: {
-            container: "wizard-step-panel-container slide-in",
-            label: "form-label",
-            required: "required",
-            input: "form-input",
-          },
-
-          topNavigatorStyles: {
-            container: "top-navigator-container",
-            step: "step-title",
-            currentStep: "current-step",
-          },
-          bottomNavigatorStyles: {
-            container: "bottom-navigator-container",
-            next: "next-button",
-            back: "back-button",
-            submit: "submit-button",
-          },
-        }}
-      />
-    </>
-  );
+  return <FormWizard formik={formik} steps={steps} isTopNavigator isBottomNavigator initialStep={1} />;
 }
 
 export default App;

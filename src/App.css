@@ -5,13 +5,13 @@
 }
 
 #root {
-  margin: 0 auto;
-  padding: 2rem;
+  /* margin: 0 auto;
+  padding: 1rem;
   background-color: #e0e7ff75;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   font-family: sans-serif;
 }
 
@@ -19,9 +19,8 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   position: relative;
-  height: 85vh;
+  /* height: 90vh; */
   padding: 25px;
-  min-width: 90%;
 
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.43);
@@ -29,7 +28,6 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .top-navigator-container {
@@ -64,7 +62,6 @@
 
 .current-step {
   color: rgba(37, 92, 163, 0.719);
-  
 }
 
 .current-step::after {
@@ -73,15 +70,16 @@
 }
 
 .wizard-step-panel-container {
-  padding: 40px 0px;
-  width: 90%;
+  padding: 60px 0px 0px 0px;
+
   animation-duration: 0.5s;
   display: flex;
   align-items: start;
   flex-direction: column;
   margin: 0 auto;
-  height: 100vh;
   gap: 50px;
+  overflow-y: auto;
+  height: 80vh;
 }
 
 .slide-in {
@@ -101,20 +99,30 @@
   }
 }
 
-/* @keyframes slide-out {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-} */
+.form-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.checkbox {
+  display: flex;
+  direction: row;
+
+  align-items: center;
+  justify-content: start;
+  /* margin-left: 50px; */
+  width: 100%;
+  gap: 15px;
+}
 
 .form-label {
   display: block;
   font-weight: bold;
-  margin-bottom: 8px;
+
   text-transform: capitalize;
+  white-space: nowrap;
 }
 
 .required {
@@ -123,19 +131,29 @@
 }
 
 .form-input {
-  width: 100%;
+  /* width: 100%; */
   padding: 16px 8px;
   border: none;
   border-bottom: 1px solid #ccc;
   box-sizing: border-box;
 }
+
 .form-input::placeholder {
-  opacity: 0.5; 
+  opacity: 0.5;
 }
 
 .form-input:focus {
   border-color: #66afe9;
   outline: none;
+}
+
+.error {
+  color: red;
+  text-transform: capitalize;
+}
+
+.required {
+  color: red;
 }
 
 .bottom-navigator-container {
@@ -148,7 +166,6 @@
   gap: 10px;
 }
 
-/* Next Button */
 .next-button {
   background-color: #008cba;
   color: white;
@@ -159,7 +176,6 @@
   font-size: 16px;
 }
 
-/* Back Button */
 .back-button {
   background-color: #f44336;
   color: white;
@@ -170,30 +186,28 @@
   font-size: 16px;
 }
 
-/* Submit Button */
 .submit-button {
-  background-color: #008cba; /* Blue background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Padding for size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 16px; /* Font size */
+  background-color: #008cba;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-/* Common Styles for All Buttons */
 .next-button:hover,
 .back-button:hover,
 .submit-button:hover {
-  opacity: 0.9; /* Slightly dim the button on hover */
+  opacity: 0.9;
 }
 .next-button:disabled,
 .submit-button:disabled {
-  opacity: 0.5; /* Slightly dim the button on hover */
+  opacity: 0.5;
 }
 
 .next-button:focus,
 .back-button:focus,
 .submit-button:focus {
-  outline: none; /* Remove default focus outline */
+  outline: none;
 }

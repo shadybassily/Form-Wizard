@@ -4,17 +4,14 @@ import useSteps from "src/hooks/useSteps";
 import { Field, Step } from "src/types/index";
 
 interface FormWizardProps {
-  isTabs?: boolean;
-  initialStep?: number;
   steps: Step[];
+  formik: any;
+  initialStep?: number;
   isTopNavigator?: boolean;
   isBottomNavigator?: boolean;
-  topNavigatorStyles?: any;
-  styles?: any;
-  formik: any;
 }
 
-const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], styles, isTopNavigator = false, isBottomNavigator = false, formik }) => {
+const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], isTopNavigator = false, isBottomNavigator = false, formik }) => {
   const [currentStep, handleChange] = useSteps(initialStep);
 
   const checkIsStepCompletion = (step: Step) => {
@@ -38,13 +35,19 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], st
   const assignChangeFunctionToFormFields = (fields: Field[]) => {
     return fields.map((field) => {
       const isFile = field.type == "file";
+      const isCheckbpx = field.type == "checkbox";
+      
       return {
         ...field,
         value: isFile ? "" : formik.values[field.name],
+        checked : formik.values[field.name],
         onChange: (e: any) => {
           if (isFile) {
             const file = e.target.files ? e.target.files[0] : null;
             formik.setFieldValue([field.name], file);
+          } else if (isCheckbpx) {
+            const value = e.target.checked;
+            formik.setFieldValue([field.name], value);
           } else {
             formik.setFieldValue([field.name], e.target.value);
           }
@@ -61,15 +64,11 @@ const FormWizard: React.FC<FormWizardProps> = ({ initialStep = 0, steps = [], st
   }, []);
 
   return (
-    <div className={styles.formWizardContainer}>
+    <div className="form-wizard-container">
       <form onSubmit={formik.handleSubmit}>
-        {isTopNavigator && (
-          <TopNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} topNavigatorStyles={styles.topNavigatorStyles} formik={formik} />
-        )}
-        <WizardStepPanel steps={modifiedSteps} currentStep={currentStep} styles={styles.WizardStepPanel} formik={formik} />
-        {isBottomNavigator && (
-          <BottomNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} styles={styles.bottomNavigatorStyles} />
-        )}
+        {isTopNavigator && <TopNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} />}
+        <WizardStepPanel steps={modifiedSteps} currentStep={currentStep} formik={formik} />
+        {isBottomNavigator && <BottomNavigator steps={modifiedSteps} currentStep={currentStep} handleChange={handleChange} formik={formik} />}
       </form>
     </div>
   );

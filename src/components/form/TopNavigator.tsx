@@ -6,10 +6,9 @@ interface TopNavigatorProps {
   currentStep: number;
   formik: any;
   handleChange: (newStep: number) => void;
-  topNavigatorStyles?: any;
 }
 
-const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange, topNavigatorStyles }) => {
+const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleChange }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
 
   const handleOnClick = (i: number) => {
@@ -22,14 +21,14 @@ const TopNavigator: React.FC<TopNavigatorProps> = ({ steps, currentStep, handleC
   };
 
   return (
-    <div className={`${topNavigatorStyles.container}`}>
+    <div className="top-navigator-container">
       {steps?.map((step, i) => (
         <div
           key={i}
           onClick={() => {
             handleOnClick(i);
           }}
-          className={`${topNavigatorStyles.step} ${currentStep === i ? topNavigatorStyles.currentStep : ""}`}
+          className={`step-title ${currentStep === i ? "current-step" : ""}`}
         >
           {step.title}
         </div>

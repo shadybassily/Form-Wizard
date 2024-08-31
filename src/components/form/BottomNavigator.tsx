@@ -1,17 +1,15 @@
 import React from "react";
-import { Step } from "src/types/index";
 import ShowComponentWhen from "src/components/common/ShowComponentWhen";
-import { FormikFormProps } from "formik";
+import { Step } from "src/types/index";
 
 interface BottomNavigatorProps {
   steps: Step[];
   currentStep: number;
   handleChange: (newStep: number) => void;
   formik: any;
-  styles?: any;
 }
 
-const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, handleChange, formik, styles }) => {
+const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, handleChange, formik }) => {
   const isNextDisabled = !steps[currentStep].isCompleted;
 
   const isLastTab = currentStep == steps.length - 1;
@@ -26,11 +24,11 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
   };
 
   return (
-    <div className={styles.container}>
+    <div className="bottom-navigator-container">
       <ShowComponentWhen
         when={!isFirstTab}
         show={
-          <button type="button" className={styles.back} onClick={handleBack}>
+          <button type="button" className="back-button" onClick={handleBack}>
             Back
           </button>
         }
@@ -38,7 +36,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
       <ShowComponentWhen
         when={!isLastTab}
         show={
-          <button type="button" className={styles.next} onClick={handleNext} disabled={isNextDisabled}>
+          <button type="button" className="next-button" onClick={handleNext} disabled={isNextDisabled}>
             Next
           </button>
         }
@@ -47,7 +45,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({ steps, currentStep, h
       <ShowComponentWhen
         when={isLastTab}
         show={
-          <button className={styles.submit} type="submit" onClick={formik.handleSubmit}>
+          <button className="submit-button" type="submit" onClick={formik.handleSubmit}>
             Submit
           </button>
         }
